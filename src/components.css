@@ -54,7 +54,7 @@
     height: 17.4rem;
     margin: 0 auto; 
     float: none; 
-    margin-top: 1%;
+    margin: 1% auto 0 auto;
     background-size: 43%;
     background-image: url(".\images\na.png");   
 }
@@ -74,10 +74,30 @@
     width: 14rem;
     height: 20.3rem;
     border-radius: 5px;
-    margin-top: 1%;
-    margin-bottom: 13%;
+    margin: 1% auto 13% auto;
     background-size: 100%;
     background-image: url(".\images\na.png");
+}
+/* 524 */
+@media only screen and (max-width: 524px){
+    .longTile{
+        width: 10rem;
+        height: 12.3rem;
+        margin: 1% auto 10% auto;
+    }
+    .longTile:hover{
+        margin: 1% auto 10% auto;
+        width: 10rem;
+        height: 12.3rem;
+    }
+    .commonTileClass{
+        background-size: 5rem 5rem;
+    }
+}
+
+.bigTileClass{
+    background-repeat: no-repeat, repeat;
+    background-position: bottom center;
 }
 
 .commonTileClass{

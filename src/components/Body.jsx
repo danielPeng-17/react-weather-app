@@ -26,6 +26,14 @@ class Body extends Component {
         );
     }
 
+    getTodayDate(){
+        let todayDate = new Date();
+        let dd = String(todayDate.getDate()).padStart(2, '0');
+        let mm = String(todayDate.getMonth() + 1).padStart(2, '0'); 
+        let yyyy = todayDate.getFullYear();
+        return (yyyy+"-"+mm+"-"+dd);
+    }
+
     // get current user location
     getLocation(){ 
         if (navigator.geolocation) {
@@ -37,19 +45,12 @@ class Body extends Component {
         return 'Toronto';
     }
 
-    getTodayDate(){
-        let todayDate = new Date();
-        let dd = String(todayDate.getDate()).padStart(2, '0');
-        let mm = String(todayDate.getMonth() + 1).padStart(2, '0'); 
-        let yyyy = todayDate.getFullYear();
-        return (yyyy+"-"+mm+"-"+dd);
-    }
-
+    // make custom api urls
     getApiURL(location){
         const apiKey = constants.apiKey;
         let todayURL = 'https://api.openweathermap.org/data/2.5/weather?';
         let forecastURL = 'https://api.openweathermap.org/data/2.5/forecast?'; 
-        let end = (location === 'Toronto') ? 'q='+location : 'lat=' + location.coords.latitude + '&lon=' + location.coords.longitude;
+        let end = (location === 'Toronto') ? 'q=Toronto' : 'lat=' + location.coords.latitude + '&lon=' + location.coords.longitude;
         todayURL += end + '&units=metric&appid=' + apiKey;
         forecastURL += end + '&units=metric&appid=' + apiKey;
         return [todayURL, forecastURL];
@@ -111,7 +112,7 @@ class Body extends Component {
                 {this.state.loaded ? (
                     <div className={styles}>
                         <Header city={this.state.city} />
-                        <Container >
+                        <Container style={{textAlign: "center"}}>
                             <Row >
                                 <Col style={{textAlign: "center", paddingBottom: "2%"}}>
                                     {this.renderTile(0)}
@@ -135,6 +136,7 @@ class Body extends Component {
                         </Container>
                     </div>
                 ) : (
+                    // loading screen
                     <Loading />
                 )}
             </React.Fragment>  

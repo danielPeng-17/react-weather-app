@@ -4,9 +4,9 @@ import Card from 'react-bootstrap/Card';
 
 class Tile extends Component {
     render() { 
-        var styles = (this.props.isLongTile) ? "longTile" : "tile";
+        var styles = (this.props.isLongTile) ? "longTile commonTileClass" : "tile bigTileClass";
         
-        styles += " tile" + this.props.weatherDes + " commonTileClass";
+        styles += " tile" + this.props.weatherDes;
 
         return ( 
             <Card className={styles} border="dark">
